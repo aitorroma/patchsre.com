@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+const {t}=Astro.props;const c=t.coordination;
+---
+<section id="clusters" class="coordination section" aria-labelledby="coordination-title">
+  <div class="container reveal">
+    <div class="coordination-grid">
+      <div class="coordination-copy">
+        <span class="section-tag">{c.tag}</span>
+        <h2 id="coordination-title">{c.title}</h2>
+        <p>{c.body}</p>
+        <div class="coordination-review"><Icon name="check"/><div><h3>{c.reviewTitle}</h3><p>{c.reviewBody}</p></div></div>
+      </div>
+      <figure class="card coordination-plan" aria-label={c.example}>
+        <div class="coordination-plan-head"><span>{c.environment}</span><span class="plan-signed"><Icon name="shield" size={16}/>{c.plan}</span></div>
+        <ol class="cluster-sequence">
+          {c.groups.map((group:{name:string,status:string,state:string,nodes:string[][]},i:number)=><li class:list={['cluster-group',group.state]}>
+            <div class="cluster-group-head"><div><span class="cluster-position" aria-hidden="true">0{i+1}</span><h3>{group.name}</h3></div><span class="cluster-status">{group.status}</span></div>
+            <ul>{group.nodes.map((node:string[])=><li class:list={['cluster-node',node[2]]}><span class="node-dot" aria-hidden="true"></span><code>{node[0]}</code><span>{node[1]}</span></li>)}</ul>
+          </li>)}
+        </ol>
+        <p class="coordination-gate"><Icon name="network" size={20}/>{c.gate}</p>
+        <figcaption>{c.example}</figcaption>
+      </figure>
+    </div>
+    <div class="coordination-features">{c.features.map((feature:string[],i:number)=><article><Icon name={['network','database','gear'][i]}/><h3>{feature[0]}</h3><p>{feature[1]}</p></article>)}</div>
+    <p class="coordination-note">{c.note}</p>
+  </div>
+</section>

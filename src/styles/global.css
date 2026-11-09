@@ -38,3 +38,46 @@
 @media(min-width:961px) and (max-width:1200px){.header nav{gap:17px}.header-actions{gap:16px}.header-actions>.login,.header-actions>.nav-cta{font-size:14px}.language-picker{gap:6px}.language-globe{width:16px}.language-switch a{min-width:30px;min-height:30px;font-size:11px}}
 @media(max-width:960px){.header-actions{width:100%;margin:0;padding-top:20px;border-top:1px solid var(--line);gap:22px}.header-actions .language-picker{margin-right:auto}.header-actions>.login{font-size:16px}.header-actions>.nav-cta{font-size:16px}}
 @media(max-width:600px){.header-actions{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:20px}.header-actions .nav-cta{grid-column:1/-1;width:100%}.language-switch a{min-width:44px;min-height:36px}.header-actions .login{padding:10px 0}}
+
+/* Cluster-aware patching: a signed plan, a visible order, a verification gate. */
+.coordination{border-top:1px solid var(--line)}
+.coordination-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.coordination-copy h2{margin:20px 0 24px;max-width:560px}
+.coordination-copy>p{font-size:19px;line-height:1.75;max-width:600px}
+.coordination-review{display:flex;gap:14px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line);max-width:600px}
+.coordination-review>svg{color:var(--red);flex-shrink:0}
+.coordination-review h3{font-size:19px;margin:2px 0 10px;letter-spacing:-.02em}
+.coordination-review p{font-size:15px;line-height:1.7}
+.coordination-plan{margin:0;padding:25px;position:relative;overflow:hidden}
+.coordination-plan-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;padding-bottom:22px}
+.coordination-plan-head>span:first-child{font-weight:600}
+.plan-signed{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;white-space:nowrap}
+.cluster-sequence{display:grid;gap:17px}
+.cluster-group{padding:18px;border:1px solid var(--line);border-radius:8px}
+.cluster-group.active{border-left:3px solid var(--blue)}
+.cluster-group-head,.cluster-group-head>div{display:flex;align-items:center;gap:10px}
+.cluster-group-head{justify-content:space-between;margin-bottom:13px}
+.cluster-position{font-family:ui-monospace,monospace;font-size:11px;color:var(--muted)}
+.cluster-group h3{font-size:17px;letter-spacing:-.02em}
+.cluster-status{font-size:11px;color:var(--muted)}
+.cluster-group.active .cluster-status{color:var(--blue);font-weight:600}
+.cluster-node{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:12px}
+.cluster-node code{font-size:12px;min-width:0;overflow-wrap:anywhere}
+.cluster-node>span:last-child{margin-left:auto;white-space:nowrap;font-size:11px;color:var(--muted)}
+.node-dot{width:7px;height:7px;flex-shrink:0;border:1px solid var(--muted);border-radius:50%}
+.cluster-node.done .node-dot{background:var(--green);border-color:var(--green)}
+.cluster-node.active .node-dot{background:var(--blue);border-color:var(--blue)}
+.cluster-node.done>span:last-child{color:var(--green)}
+.coordination-gate{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.7;margin:20px 0 14px}
+.coordination-gate svg{flex-shrink:0;color:var(--red);margin-top:1px}
+.coordination-plan figcaption{font-size:10px;color:var(--muted)}
+.coordination-features{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;margin-top:55px;padding-top:35px;border-top:1px solid var(--line)}
+.coordination-features article>svg{color:var(--red);margin-bottom:17px}
+.coordination-features h3{font-size:22px;margin-bottom:13px}
+.coordination-features p{font-size:15px;line-height:1.75}
+.coordination-note{font-size:12px;line-height:1.7;margin-top:27px;color:var(--muted)}
+@media(max-width:960px){.coordination-grid{gap:30px}.coordination-copy>p{font-size:17px}.coordination-plan{padding:19px}.coordination-plan-head{align-items:flex-start;flex-direction:column;gap:8px}.cluster-group{padding:14px}.coordination-features{gap:22px}.coordination-features h3{font-size:20px}.cluster-node{gap:7px}.cluster-node code{font-size:11px}}
+@media(max-width:600px){.coordination-grid{grid-template-columns:1fr;gap:30px}.coordination-copy h2{font-size:32px}.coordination-copy>p{font-size:17px}.coordination-review{margin-top:25px;padding-top:22px}.coordination-plan-head{flex-direction:row;gap:8px;font-size:12px}.plan-signed{font-size:10px}.coordination-plan{padding:18px}.cluster-group-head{gap:8px}.cluster-group h3{font-size:16px}.cluster-status{font-size:10px}.cluster-node{gap:8px}.cluster-node code{font-size:11px}.cluster-node>span:last-child{font-size:10px}.coordination-features{grid-template-columns:1fr;gap:28px;margin-top:35px;padding-top:30px}.coordination-features h3{font-size:22px}}
+@media(prefers-color-scheme:dark){.cluster-group.active .cluster-status,.cluster-node.active>span:last-child{color:#8db6ff}.cluster-node.done>span:last-child{color:#64cd86}}
+
+.coordination-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--red)}.coordination-link:hover{text-decoration:underline}

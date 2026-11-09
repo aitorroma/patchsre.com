@@ -79,3 +79,17 @@ test('language switch highlights locale and keeps equivalent legal page',async({
  await page.getByRole('link',{name:'English (EN)',exact:true}).click();
  await expect(page).toHaveURL('/en/');
 });
+
+for(const lang of ['es','en']){
+ test(`${lang} cluster coordination content and discovery`,async({page})=>{
+  await page.goto(lang==='es'?'/':'/en/');await page.emulateMedia({reducedMotion:'reduce'});
+  const section=page.locator('#clusters');
+  await expect(section.locator('h2')).toHaveText(lang==='es'?'Parchea la flota. Respeta sus dependencias.':'Patch your fleet. Respect its dependencies.');
+  await expect(section.locator('.cluster-group')).toHaveCount(2);
+  await expect(section.locator('.cluster-node')).toHaveCount(5);
+  await expect(section.locator('.coordination-note')).toContainText(lang==='es'?'no para políticas ni tareas recurrentes':'not policies or recurring jobs');
+  await page.locator('.coordination-link').click();await expect(page).toHaveURL(/#clusters$/);
+  await page.locator('.tool-details summary').click();await expect(page.locator('.tool-details')).toContainText('get_install_command');
+  await expect(page.locator('.faq-list')).toContainText(lang==='es'?'¿Cómo coordina el parcheo de un clúster?':'How does Patch coordinate cluster patching?');
+ });
+}
