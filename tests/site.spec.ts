@@ -7,6 +7,7 @@ for(const lang of ['es','en']){
    await page.setViewportSize({width,height:1000});
    const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
    await page.goto(url);await page.emulateMedia({reducedMotion:'reduce'});
+   await expect(page.locator('a.login')).toHaveAttribute('href','https://manager.patchsre.com/ui/');
    await expect(page.locator('h1')).toBeVisible();
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
    expect(errors).toEqual([]);
