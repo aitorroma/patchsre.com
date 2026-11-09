@@ -1,0 +1,3 @@
+import {config} from './config';
+export const fill = (text:string) => text.replace(/\{(\w+)\}/g,(_,key)=>String(({min:config.limits.minHosts,exampleClients:config.figures.exampleClients,exampleHosts:config.figures.exampleHosts,free:config.limits.freeHosts,companies:config.limits.freeClients,clients:config.limits.includedClients,pro:config.limits.proHosts,cve:config.figures.cve,kernel:config.figures.kernel} as Record<string,string|number>)[key] ?? key));
+export const money = (value:number,lang:string) => new Intl.NumberFormat(lang==='es'?'es-ES':'en-IE',{style:'currency',currency:'EUR',maximumFractionDigits:2,minimumFractionDigits:value%1?2:0}).format(value);

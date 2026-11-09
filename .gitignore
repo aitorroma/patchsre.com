@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+test-results/
+playwright-report/
+artifacts/*.png
+artifacts/lighthouse*.json
+
+# Internal briefs, reference originals and local QA reports
+prompt*.txt
+referencias/
+artifacts/
+# Never publish local credentials
+.env
+.env.*
+*.pem
+*.key

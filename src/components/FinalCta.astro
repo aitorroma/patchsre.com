@@ -1,0 +1,4 @@
+---
+import {config} from '../data/config';import {fill} from '../data/utils';const {t}=Astro.props;
+---
+<section class="section final-cta"><div class="container reveal"><h2>{t.final.title}</h2><p>{fill(t.final.body)}</p><div class="hero-actions"><a class="button primary" href={config.signup}>{t.start}</a><a class="button secondary" href={config.demo}>{t.demo}</a></div></div></section>

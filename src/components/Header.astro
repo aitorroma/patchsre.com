@@ -1,0 +1,6 @@
+---
+import {config} from '../data/config';
+const {t}=Astro.props;const ids=['producto','agentes','seguridad','msps','precios','faq'];const root=t.lang==='en'?'/en/':'/';
+---
+<a class="skip" href="#contenido">{t.skip}</a>
+<header class="header"><div class="nav-wrap"><a href={root} class="brand" aria-label="Patch by NimboxSRE"><img src="/logo-patch.svg" width="42" height="42" alt=""/><span><strong>Patch</strong><small>by NimboxSRE</small></span></a><button class="menu-toggle" aria-label={t.menu} aria-controls="navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav id="navigation" aria-label={t.lang==='es'?'Navegación principal':'Main navigation'}>{t.nav.map((label:string,i:number)=><a href={`${root}#${ids[i]}`}>{label}</a>)}<a class="language" href={t.lang==='es'?'/en/':'/'} lang={t.lang==='es'?'en':'es'}>{t.lang==='es'?'EN':'ES'}</a><a href="https://patch.nimboxsre.com/ui/" class="login">{t.login}</a><a class="button primary nav-cta" href={config.signup}>{t.start}</a></nav></div></header>

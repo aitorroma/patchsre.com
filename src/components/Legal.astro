@@ -1,0 +1,4 @@
+---
+import Layout from '../layouts/Layout.astro';const {t,index}=Astro.props;
+---
+<Layout t={t} title={`${t.legal.names[index]} · Patch by NimboxSRE`} description={t.legal.intro}><article class="section container legal"><span class="section-tag">{t.legal.pending}</span><h1>{t.legal.names[index]}</h1><p>{t.legal.intro}</p><p>{t.legal.bodies[index]}</p><a class="button secondary" href={t.lang==='en'?'/en/':'/'}>{t.legal.back}</a></article></Layout>

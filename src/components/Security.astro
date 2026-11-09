@@ -1,0 +1,4 @@
+---
+import Icon from './Icon.astro';const {t}=Astro.props;
+---
+<section id="seguridad" class="security section"><div class="container reveal"><div class="section-heading"><span class="section-tag">{t.security.tag}</span><h2>{t.security.title}</h2><p>{t.security.subtitle}</p></div><div class="security-grid">{t.security.items.map((item:string[])=><article><Icon name="shield"/><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div></div></section>

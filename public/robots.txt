@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://patchsre.com/sitemap.xml

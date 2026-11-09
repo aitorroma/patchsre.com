@@ -1,0 +1,4 @@
+---
+import {config} from "../data/config";import Icon from "./Icon.astro";const {t}=Astro.props;const f=config.figures;
+---
+<div class="conversation-lines"><div class="chat-line"><Icon name="alert"/><div><code>new_vulnerabilities</code> → {f.cve} {t.chat.critical} · {f.affected} {t.chat.servers}</div><time>03:12</time></div><div class="chat-line"><Icon name="info"/><div>{f.notExposed} {t.chat.notExposed}</div><time>03:12</time></div><div class="chat-line"><Icon name="play"/><div><code>patch_plan</code> → <code>prepare_job</code> → {f.patched} {t.chat.servers} · {t.chat.canary}<br/><code>submit_signed_job</code> · {t.chat.signed} <span class="pill blue">{t.chat.progress}</span></div><time>03:14</time></div><div class="chat-line"><Icon name="check"/><div><code>get_job</code> → {f.patched} {t.chat.summary} <span class="pill green">{t.chat.verified}</span></div><time>06:00</time></div></div>

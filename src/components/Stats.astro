@@ -1,0 +1,4 @@
+---
+import {config} from '../data/config';const {t}=Astro.props;
+---
+<section class="container stats" aria-label={t.lang==='es'?'Ejemplos reales':'Real examples'}><div><strong>{config.figures.discarded} {t.of} {config.figures.total}</strong><p>{t.stats[0]}</p></div><div><strong>{t.minutes}</strong><p>{t.stats[1]}</p></div><div><strong>{config.figures.ports}</strong><p>{t.stats[2]}</p></div></section>

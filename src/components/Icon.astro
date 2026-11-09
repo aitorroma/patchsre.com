@@ -1,0 +1,5 @@
+---
+const {name='check',size=28}=Astro.props;
+const paths:Record<string,string>={eye:'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Zm10-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6',file:'M6 2h9l4 4v16H6V2Zm8 0v5h5M9 11h7M9 15h7M9 19h4',shield:'m12 2 9 4v6c0 5-4 9-9 11-5-2-9-6-9-11V6l9-4Zm-4 10 3 3 6-7',alert:'m12 3 10 18H2L12 3Zm0 6v5m0 3v1',network:'M10 6 5 17m9-11 5 11M15 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM7 20a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm16 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',database:'M21 5c0 2-4 4-9 4S3 7 3 5s4-4 9-4 9 2 9 4Zm0 0v14c0 2-4 4-9 4s-9-2-9-4V5m0 7c0 2 4 4 9 4s9-2 9-4',pen:'m4 16 12-12 4 4L8 20l-6 2 2-6Zm10-10 4 4M13 22h9',gear:'m9 3 1-2h4l1 2 3 2 3 1v4l-2 2 2 3v3l-4 1-2 3h-4l-2-3-4-1v-4l2-2-2-3V6l4-1Zm3 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8',check:'M22 12a10 10 0 1 1-4-8M7 11l4 4L22 4',chart:'M3 14h4v8H3v-8Zm7-6h4v14h-4V8Zm7-6h4v20h-4V2',play:'m5 2 16 10L5 22V2',info:'M12 8v1m0 3v6M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0'};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name] || paths.check}/></svg>

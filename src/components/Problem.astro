@@ -1,0 +1,4 @@
+---
+import {fill} from '../data/utils';const {t}=Astro.props;
+---
+<section id="producto" class="section container reveal"><div class="split"><div><span class="section-tag">{t.problem.tag}</span><h2>{t.problem.title}</h2><p>{fill(t.problem.body)}</p></div><ul class="problem-list">{t.problem.items.map((item:string)=><li><span aria-hidden="true">—</span>{item}</li>)}</ul></div><blockquote>{t.problem.position}</blockquote></section>

@@ -1,0 +1,4 @@
+---
+const {t}=Astro.props;
+---
+<section id="faq" class="section container faq reveal"><div class="section-heading"><span class="section-tag">{t.faq.tag}</span><h2>{t.faq.title}</h2></div><div class="faq-list">{t.faq.items.map((item:string[])=><details><summary>{item[0]}<span aria-hidden="true">+</span></summary><p>{item[1]}</p></details>)}</div></section>

@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from './Hero.astro';import Stats from './Stats.astro';import Problem from './Problem.astro';import Agents from './Agents.astro';import Flow from './Flow.astro';import Security from './Security.astro';import Msps from './Msps.astro';import Pricing from './Pricing.astro';import Faq from './Faq.astro';import FinalCta from './FinalCta.astro';
+import {config} from '../data/config';const {t}=Astro.props;
+const schema={'@context':'https://schema.org','@type':'SoftwareApplication',name:'Patch by NimboxSRE',description:t.description,applicationCategory:'SecurityApplication',operatingSystem:'Linux',url:'https://patchsre.com',offers:[{'@type':'Offer',name:t.pricing.free,price:0,priceCurrency:'EUR'},{'@type':'Offer',name:'MSP',price:config.prices.msp,priceCurrency:'EUR',description:t.pricing.unit},{'@type':'Offer',name:'MSP Pro',price:config.prices.pro,priceCurrency:'EUR',description:t.pricing.unit}]};
+---
+<Layout t={t}><script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)}/><Hero t={t}/><Stats t={t}/><Problem t={t}/><Agents t={t}/><Flow t={t}/><Security t={t}/><Msps t={t}/><Pricing t={t}/><Faq t={t}/><FinalCta t={t}/></Layout>
