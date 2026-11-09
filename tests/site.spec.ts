@@ -63,3 +63,19 @@ test('security policy, metadata, no external runtime requests or cookies',async(
  await expect(page.locator('a.primary').first()).toHaveAttribute('href','https://patch.nimboxsre.com/ui/signup?plan=free');
  const {width,height}=await page.evaluate(async()=>{const image=new Image();image.src='/og.png';await image.decode();return {width:image.naturalWidth,height:image.naturalHeight};});expect([width,height]).toEqual([1200,630]);
 });
+
+test('language switch highlights locale and keeps equivalent legal page',async({page})=>{
+ await page.goto('/privacidad/');
+ await expect(page.locator('.language-switch [aria-current="page"]')).toHaveText('ES');
+ await page.getByRole('link',{name:'English (EN)',exact:true}).click();
+ await expect(page).toHaveURL('/en/privacidad/');
+ await expect(page.locator('html')).toHaveAttribute('lang','en');
+ await expect(page.locator('.language-switch [aria-current="page"]')).toHaveText('EN');
+ await page.getByRole('link',{name:'Español (ES)',exact:true}).click();
+ await expect(page).toHaveURL('/privacidad/');
+ await page.setViewportSize({width:390,height:844});await page.goto('/');
+ await page.locator('.menu-toggle').click();
+ await expect(page.locator('.language-switch')).toBeVisible();
+ await page.getByRole('link',{name:'English (EN)',exact:true}).click();
+ await expect(page).toHaveURL('/en/');
+});

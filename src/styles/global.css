@@ -22,3 +22,19 @@
 @media(prefers-color-scheme:dark){.verification svg{color:#64cd86}}
 
 .price-card>.minimum{font-size:12px;margin:0 0 14px;color:var(--muted)}
+
+/* A language control, not an isolated utility link. */
+.header nav{gap:26px;max-width:1160px}
+.header-actions{display:flex;align-items:center;gap:25px;margin-left:auto;flex-shrink:0}
+.header-actions .login{margin-left:0;white-space:nowrap}
+.language-picker{display:flex;align-items:center;gap:10px;color:var(--muted)}
+.language-globe{flex-shrink:0}
+.language-switch{display:inline-flex;align-items:center;gap:2px;padding:3px;background:var(--bg);border:1px solid var(--line);border-radius:999px}
+.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:34px;border-radius:999px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.025em;line-height:1;transition:color .2s,background .2s,box-shadow .2s}
+.language-switch a:hover{color:var(--text);background:var(--card)}
+.language-switch a[aria-current=page]{color:var(--red);background:var(--card);box-shadow:0 1px 4px #231b1218}
+.language-switch a:focus-visible{outline-offset:2px}
+@media(min-width:1201px){.header-actions>.login{font-size:18px}.header-actions>.nav-cta{font-size:18px}}
+@media(min-width:961px) and (max-width:1200px){.header nav{gap:17px}.header-actions{gap:16px}.header-actions>.login,.header-actions>.nav-cta{font-size:14px}.language-picker{gap:6px}.language-globe{width:16px}.language-switch a{min-width:30px;min-height:30px;font-size:11px}}
+@media(max-width:960px){.header-actions{width:100%;margin:0;padding-top:20px;border-top:1px solid var(--line);gap:22px}.header-actions .language-picker{margin-right:auto}.header-actions>.login{font-size:16px}.header-actions>.nav-cta{font-size:16px}}
+@media(max-width:600px){.header-actions{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:20px}.header-actions .nav-cta{grid-column:1/-1;width:100%}.language-switch a{min-width:44px;min-height:36px}.header-actions .login{padding:10px 0}}
