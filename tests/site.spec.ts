@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import {config} from '../src/data/config';
 for(const lang of ['es','en']){
  const url=lang==='es'?'/':'/en/';
  for(const width of [360,390,768,1280,1586,1920]){
@@ -24,6 +25,7 @@ for(const lang of ['es','en']){
   }
  });
  test(`${lang} configurator and form`,async({page})=>{
+  test.skip(!config.pricingPublished,'Pricing and checkout are intentionally unpublished.');
   await page.goto(url);await page.emulateMedia({reducedMotion:'reduce'});
   await page.locator('#hosts').fill('10000');await expect(page.locator('#hosts-range')).toHaveValue('10000');
   await page.locator('#hosts').fill('200');await expect(page.locator('#hosts-range')).toHaveValue('200');
@@ -44,13 +46,14 @@ test('mobile menu keyboard and copy',async({page,context})=>{
  await page.locator('[data-copy]').click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('Authorization: Bearer pmk_…');
 });
 test('static links, legal pages and schema',async({page})=>{
- await page.goto('/');const schema=JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());expect(schema['@type']).toBe('SoftwareApplication');expect(schema.offers[1].price).toBe(1.5);
+ await page.goto('/');const schema=JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());expect(schema['@type']).toBe('SoftwareApplication');if(config.pricingPublished){expect(schema.offers[1].price).toBe(config.prices.msp);}else{expect(schema.offers).toBeUndefined();}
  const links=await page.locator('a').evaluateAll(els=>els.map(el=>el.getAttribute('href')).filter(Boolean));
  for(const path of new Set(links.filter(s=>s!.startsWith('/')&&!s!.includes('#')))){const response=await page.request.get(path!);expect(response.status()).toBe(200);}
  for(const path of ['/aviso-legal/','/privacidad/','/cookies/']){await page.goto(path);await expect(page.locator('main')).toContainText('PENDIENTE DE REVISIÓN LEGAL');}
  for(const path of ['/sitemap.xml','/sitemap-index.xml','/sitemap-0.xml','/robots.txt','/og.png','/CNAME','/404.html']){const response=await page.request.get(path);expect(response.status()).toBe(200);}
 });
 test('no JavaScript form remains usable',async({browser})=>{
+ test.skip(!config.pricingPublished,'Pricing and checkout are intentionally unpublished.');
  const context=await browser.newContext({javaScriptEnabled:false});const page=await context.newPage();await page.goto('http://127.0.0.1:4321/');await page.locator('#hosts').fill('75');await expect(page.locator('form button')).toBeEnabled();expect(await page.locator('form').evaluate((f:HTMLFormElement)=>new FormData(f).get('hosts'))).toBe('75');await context.close();
 });
 
@@ -91,5 +94,17 @@ for(const lang of ['es','en']){
   await page.locator('.coordination-link').click();await expect(page).toHaveURL(/#clusters$/);
   await page.locator('.tool-details summary').click();await expect(page.locator('.tool-details')).toContainText('get_install_command');
   await expect(page.locator('.faq-list')).toContainText(lang==='es'?'¿Cómo coordina el parcheo de un clúster?':'How does Patch coordinate cluster patching?');
+ });
+}
+
+for(const lang of ['es','en']){
+ test(`${lang} pricing is coming soon without offers or checkout`,async({page})=>{
+  test.skip(config.pricingPublished,'Only applies while pricing is unpublished.');
+  await page.goto(lang==='es'?'/':'/en/');
+  await expect(page.locator('#precios h2')).toHaveText(lang==='es'?'Próximamente':'Coming soon');
+  await expect(page.locator('#precios form')).toHaveCount(0);
+  await expect(page.locator('#precios .price')).toHaveCount(0);
+  await expect(page.locator('#precios a')).toHaveAttribute('href','mailto:hola@patchsre.com');
+  expect(JSON.parse(await page.locator('script[type="application/ld+json"]').innerText()).offers).toBeUndefined();
  });
 }

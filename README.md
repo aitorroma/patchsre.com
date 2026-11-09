@@ -15,6 +15,10 @@ npm run preview
 
 `dist/` contiene el sitio listo para cualquier alojamiento estático. No requiere servidor de aplicación, CDN, variables de entorno ni claves.
 
+## Estado de precios
+
+`config.pricingPublished: false` muestra «Próximamente» / «Coming soon», sin tarifas, checkout ni ofertas de precio en JSON-LD. Los planes y el configurador se conservan para una futura publicación; requieren aprobación comercial antes de activar la bandera.
+
 ## Contenido y estructura
 
 - `src/data/es.ts`, `src/data/en.ts`: todos los textos por idioma, legales y FAQ incluidos.

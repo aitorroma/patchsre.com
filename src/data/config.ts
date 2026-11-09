@@ -1,6 +1,7 @@
 // Single source of truth for prices, limits, example figures and destinations.
 // Extras have no approved numeric price: quote them rather than inventing fees.
 export const config = {
+ pricingPublished:false,
  login:'https://manager.patchsre.com/ui/',
  signup:'https://patch.nimboxsre.com/ui/signup?plan=free',
  freeAccess:'mailto:hola@patchsre.com?subject=Acceso%20gratis%20a%20Patch',

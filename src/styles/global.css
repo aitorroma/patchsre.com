@@ -81,3 +81,5 @@
 @media(prefers-color-scheme:dark){.cluster-group.active .cluster-status,.cluster-node.active>span:last-child{color:#8db6ff}.cluster-node.done>span:last-child{color:#64cd86}}
 
 .coordination-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--red)}.coordination-link:hover{text-decoration:underline}
+
+.pricing-coming-soon{text-align:center}.pricing-coming-soon .section-heading{max-width:700px;margin-bottom:25px}.pricing-coming-soon h2{font-size:clamp(40px,5vw,64px)}
